@@ -24,4 +24,6 @@
 
 ## * 프로젝트 수상 이력
 - **국립부경대학교 2024학년도 정보융합대학 융합캡스톤디자인 경진대회 장려상 수상**
+![수상 사진](https://github.com/Team-Filled-with-laughter/Autobump/blob/main/%EB%B6%80%EA%B2%BD%EB%8C%80%ED%95%99%EA%B5%90_2024%ED%95%99%EB%85%84%EB%8F%84_%EC%A0%95%EB%B3%B4%EC%9C%B5%ED%95%A9%EB%8C%80%ED%95%99_%EC%9C%B5%ED%95%A9%EC%BA%A1%EC%8A%A4%ED%86%A4%EB%94%94%EC%9E%90%EC%9D%B8_%EA%B2%BD%EC%A7%84%EB%8C%80%ED%9A%8C(%EC%9E%A5%EB%A0%A4%EC%83%81).pdf)
 - **한국사물인터넷학회 2024학년도 종합학술대회 우수 논문상 수상**
+![수상 사진]
