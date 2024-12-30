@@ -1,3 +1,5 @@
-# Autobump
+# 2024 웃음가득조 캡스톤디자인 - IoT를 활용한 자동방지턱 시스템
 
-http://naver.me/FY3zYbeS
+---
+### 시연 영상
+[웃음가득조 시연 영상](http://naver.me/FY3zYbeS)
