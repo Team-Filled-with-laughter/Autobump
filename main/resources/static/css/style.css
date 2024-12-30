@@ -1,0 +1,323 @@
+  body {
+    font-family: 'nanumsquare', sans-serif;
+    overflow: auto;
+    text-align: center;
+    margin: 0; /* 기본 여백 제거 */
+    padding: 0; /* 기본 패딩 제거 */
+    background: linear-gradient(135deg, #f8f9fa, #e3e3e3);
+    font-family: 'Roboto', sans-serif;
+  }
+
+  button {
+    cursor: pointer; /* 버튼에 커서 포인터 추가 */
+  }
+  
+  /* nav */
+  .black-nav {
+    position: fixed;
+    background: #607D8B;
+    width: 100%;
+    height: 60px; /* 높이 증가 */
+    display: flex;
+    align-items: center; /* 수직 중앙 정렬 */
+    color: white;
+    padding: 0 20px; /* 좌우 패딩 조정 */
+    font-weight: 600;
+    font-size: 22px;
+    padding: 0 15px;
+    z-index: 1; /* 배너 아래로 설정 */
+  }
+  
+  .black-nav div {
+    padding-top: 7px;
+  }
+  
+  /* 비디오 */
+  .container {
+    margin-top: 70px;
+  }
+
+  img {
+    position: absolute; /* 비디오를 절대 위치로 설정 */
+    top: 13.76vh;
+    left: 0.2vw; /* 부모 컨테이너의 기준 위치 설정 */
+    width: 54.78vw; /* 비디오의 너비 */
+    height: 86vh; /* 비디오의 높이 */
+    border-radius: 8px; /* 구석을 둥글게 */
+  }
+  
+  /* 배너 */
+  .banner {
+    position: fixed;
+    top: 0; /* 배너를 상단에 위치시킴 */
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background-image: url('./laugh.PNG'); /* public 폴더 내의 경로 */
+    background-size: 100% 100%;
+    background-position: center;
+    color: white;
+    font-size: 1.5rem;
+    text-align: center;
+    z-index: 2; /* 네비게이션 바 위로 설정 */
+    font-family: 'Nanum Gothic', sans-serif;
+    font-weight: bold;
+  }
+  
+  /* 배너 전체에 링크를 적용 */
+  .banner-link {
+    display: block; /* a 태그가 블록 레벨 요소로 취급되게 하여 전체 배너 영역을 차지하도록 설정 */
+    width: 100%;
+    height: 100%;
+    text-decoration: none; /* 링크에 기본적으로 적용되는 밑줄 제거 */
+  }
+  
+  .banner .banner-text {
+    font-size: 2rem;
+    margin: 0;
+    padding-top: 20px; /* 글씨를 아래로 20px 위치시킴 */
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.2));
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.6);
+    color: white;
+  }
+  
+  /* 임계값 변경 */
+  .speedsection {
+    position: absolute;
+    width: 44.67vw;
+    height: 33.80vh;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)); /* 어두운 그라데이션 */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* 부드러운 그림자 */
+    top: 47.7vh;
+    right: 0.2vw;
+    border-radius: 10px; /* 구석을 둥글게 */
+    box-sizing: border-box; /* 패딩을 포함한 크기 계산 */
+    padding: 40px; /* 내부 여백을 추가 */
+  }
+  
+  
+  .number {
+      width: 20vw;
+      height: 2vw;
+      font-size: 1.2rem;
+      text-align: center;
+      margin: 20px; /* 아래쪽 여백을 추가 */
+  }
+
+  .submit {
+      width: 5vw;
+      height: 2vw;
+  }
+
+  /* 액추에이터 컨트롤러 */
+  .actuatorsection {
+    position: absolute;
+    width: 44.67vw;
+    height: 18.05vh;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)); /* 어두운 그라데이션 */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* 부드러운 그림자 */
+    top: 81.7vh;
+    right: 0.2vw;
+    border-radius: 8px; /* 구석을 둥글게 */
+    text-align: center; /* 제목과 버튼을 가운데 정렬 */
+}
+
+  .section-title {
+      font-size: 2rem; /* 제목 크기 */
+      font-weight: bold; /* 제목 두껍게 */
+      margin-top: 10px;
+      margin-bottom: 10px; /* 제목과 버튼 사이 간격 */
+      color: #fff; /* 제목 색상 */
+  }
+
+  .actuatorbutton {
+      background: none;
+      border: none;
+      padding: 15px;  /* 버튼의 크기를 조금 키워서 중앙 정렬이 더 잘 보이도록 함 */
+      margin: 10px;
+      display: inline-block;
+      cursor: pointer;
+      position: relative;  /* 버튼 안에서 상대적인 위치 지정 */
+      width: 150px;  /* 버튼 너비 */
+      height: 70px; /* 버튼 높이 */
+  }
+
+  .btn-up:hover {
+    transform: translateY(-3px);  /* 버튼을 살짝 위로 밀어주는 효과 */
+  }
+
+  .btn-down:hover {
+    transform: translateY(3px);  /* 클릭 시 아래로 밀리는 효과 */
+  }
+
+  .arrow01 {
+    position: absolute;  /* 버튼의 정중앙에 위치하도록 절대 위치 지정 */
+    top: 30%;  /* 버튼의 세로 중앙 */
+    left: 50%;  /* 버튼의 가로 중앙 */
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 40px 60px 40px;
+    transform: translate(-50%, -50%);  /* 정중앙으로 이동 */
+  }
+
+  .btn-up .arrow01 {
+    border-color: transparent transparent red transparent;
+  }
+
+  .btn-down .arrow01 {
+    border-color: transparent transparent blue transparent;
+  }
+
+  .arrow01::after {
+    content: "";
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    top: 60px;
+    transform: translate(-50%, 0%);
+  }
+
+  .btn-down .arrow01 {
+    top: 65px;
+    transform: translate(-50%, -50%) rotate(180deg); /* 회전은 화살표 본체만 */
+  }
+
+  .btn-up .arrow01::after {
+    background-color: red;
+  }
+
+  .btn-down .arrow01::after {
+    background-color: blue;
+    top: 60px; /* 회전하지 않도록 위치 조정 */
+    transform: translateX(-50%); /* 중앙 정렬 유지 */
+  }
+
+  @keyframes blinkArrow {
+    0% {
+      border-color: transparent transparent red transparent;  /* 빨간색 */
+    }
+    25% {
+      border-color: transparent transparent #ffd67a transparent;  /* 기본 화살표 색 */
+    }
+    50% {
+      border-color: transparent transparent red transparent;  /* 빨간색 */
+    }
+    75% {
+      border-color: transparent transparent #ffd67a transparent;  /* 기본 화살표 색 */
+    }
+    100% {
+      border-color: transparent transparent red transparent;  /* 빨간색 */
+    }
+  }
+
+  @keyframes blinkArrow2 {
+    0% {
+      background-color: red;  /* 빨간색 네모 */
+    }
+    25% {
+      background-color: #ffd67a;  /* 기본 색 네모 */
+    }
+    50% {
+      background-color: red;  /* 빨간색 네모 */
+    }
+    75% {
+      background-color: #ffd67a;  /* 기본 색 네모 */
+    }
+    100% {
+      background-color: red;  /* 빨간색 네모 */
+    }
+  }
+
+  @keyframes blinkArrowBlue {
+    0% {
+      border-color: transparent transparent blue transparent;  /* 빨간색 */
+    }
+    25% {
+      border-color: transparent transparent #2a6f9e transparent;  /* 기본 화살표 색 */
+    }
+    50% {
+      border-color: transparent transparent blue transparent;  /* 빨간색 */
+    }
+    75% {
+      border-color: transparent transparent #2a6f9e transparent;  /* 기본 화살표 색 */
+    }
+    100% {
+      border-color: transparent transparent blue transparent;  /* 빨간색 */
+    }
+  }
+
+  @keyframes blinkArrow2Blue {
+    0% {
+      background-color: blue
+    }
+    25% {
+      background-color: #2a6f9e
+    }
+    50% {
+      background-color: blue
+    }
+    75% {
+      background-color: #2a6f9e
+    }
+    100% {
+      background-color: blue
+    }
+  }
+
+  /* 버튼을 클릭했을 때 깜빡임 애니메이션 적용 */
+  .actuatorbutton.blinking-red .arrow01 {
+    animation: blinkArrow 3s ease-in-out infinite;
+  }
+
+  .actuatorbutton.blinking-red .arrow01::after{
+    animation: blinkArrow2 3s ease-in-out infinite;
+  }
+
+  .actuatorbutton.blinking-blue .arrow01 {
+    animation: blinkArrowBlue 3s ease-in-out infinite;
+  }
+
+  .actuatorbutton.blinking-blue .arrow01::after{
+    animation: blinkArrow2Blue 3s ease-in-out infinite;
+  }
+
+  button:hover .arrow01 {
+    opacity: 0.8;
+  }
+
+
+  /* 속도 측정 표시 */
+  .Datalogsection {
+    position: absolute;
+    width: 44.67vw;
+    height: 33.8vh;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)); /* 어두운 그라데이션 */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* 부드러운 그림자 */
+    top: 13.76vh;
+    right: 0.2vw;
+    padding: 40px; /* 내부 여백을 추가 */
+    box-sizing: border-box; /* 패딩을 포함한 크기 계산 */
+    border-radius: 10px; /* 둥근 모서리 */
+  }
+      
+  .Datalogsection h1, .speedsection h1 {
+    font-size: 2rem;
+    margin-top: 0px; /* 제목과 내용 사이의 여백 */
+    color: white; /* 제목 글자 색 */
+    text-align: center; /* 가운데 정렬 */
+    border-bottom: 2px solid white; /* 제목 아래에 선 추가 */
+    padding-bottom: 15px; /* 제목과 선 사이의 여백 */
+  }
+      
+  .Datalogsection div, .speedsection div {
+    background-color: #333; /* 속도 데이터 출력 부분의 배경색 */
+    border-radius: 8px; /* 구석을 둥글게 */
+    padding: 35px;
+    color: white; /* 글자 색 */
+  }
+      
+  .Datalogsection p {
+    font-size: 1.5rem;
+    margin: 10px 0; /* 각 항목 사이에 여백을 추가 */
+  }

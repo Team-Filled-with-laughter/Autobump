@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Stream and Speed Feed</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #333;
+        }
+        #video {
+            width: 100%;
+            max-width: 640px;
+            margin: 20px 0;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+        }
+        #speedInfo {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        #v1, #v2 {
+            margin: 5px 0;
+        }
+        .button-container {
+            margin-top: 20px;
+        }
+        .threshold-button, .up-button, .down-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 5px;
+        }
+        .threshold-button:hover, .up-button:hover, .down-button:hover {
+            background-color: #45a049;
+        }
+        .input-container {
+            margin: 10px 0;
+        }
+        .threshold-input {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Welcome to Our Video Streaming Page!</h1>
+    <p>We're glad to have you here. Enjoy the video feed and speed information below:</p>
+
+    <!-- MJPEG Video Feed -->
+    <img id="video" src="/video-feed" alt="Video Feed" />
+
+    <!-- Speed Information -->
+    <div id="speedInfo">
+        <p id="v1">v1: Loading...</p>
+        <p id="v2">v2: Loading...</p>
+    </div>
+
+    <div class="input-container">
+        <!-- Input field to enter threshold value -->
+        <input type="number" id="thresholdInput" class="threshold-input" placeholder="Enter threshold value" />
+    </div>
+
+    <div class="button-container">
+        <!-- Button to send the input threshold value -->
+        <button class="threshold-button" id="thresholdButton">Update Threshold</button>
+        <!-- Up and Down buttons to send 1 or -1 -->
+        <button class="up-button" id="upButton">Up</button>
+        <button class="down-button" id="downButton">Down</button>
+    </div>
+</div>
+
+<script>
+    // Speed feed 데이터를 받는 SSE 연결
+    const eventSource = new EventSource("/speed_feed");
+
+    // 데이터를 받으면 화면에 표시
+    eventSource.onmessage = function(event) {
+        const data = JSON.parse(event.data); // JSON 파싱
+        document.getElementById("v1").textContent = "v1: " + data.v1;
+        document.getElementById("v2").textContent = "v2: " + data.v2;
+    };
+
+    eventSource.onerror = function() {
+        console.error("Error occurred while receiving SSE.");
+    };
+
+    // 버튼 클릭 시 POST 요청을 보내는 함수 (임계값 업데이트)
+    document.getElementById('thresholdButton').addEventListener('click', function() {
+        const thresholdValue = document.getElementById('thresholdInput').value;
+
+        if (!thresholdValue || isNaN(thresholdValue)) {
+            alert('유효한 임계값을 입력해주세요.');
+            return;
+        }
+
+        fetch('http://localhost:5001/update_threshold', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': 'https://team-filled-with-laughter.netlify.app',
+                'Access-Control-Allow-Methods': 'POST, OPTIONS',
+                'Access-Control-Allow-Headers': 'Content-Type',
+                'Access-Control-Allow-Credentials': 'true'
+            },
+            body: JSON.stringify({ threshold: parseInt(thresholdValue) })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.message) {
+                alert(data.message);
+            } else if (data.error) {
+                alert(data.error);
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('임계값 업데이트 중 오류가 발생했습니다.');
+        });
+    });
+
+    // Up 버튼 클릭 시 POST 요청을 보내는 함수 (값 1)
+    document.getElementById('upButton').addEventListener('click', function() {
+        sendThresholdUpdate(1);  // 1을 서버로 보냄
+    });
+
+    // Down 버튼 클릭 시 POST 요청을 보내는 함수 (값 -1)
+    document.getElementById('downButton').addEventListener('click', function() {
+        sendThresholdUpdate(-1);  // -1을 서버로 보냄
+    });
+
+    // 서버에 임계값 변경 요청을 보내는 함수
+    function sendThresholdUpdate(value) {
+        fetch('http://localhost:5001/update_actuator', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': 'https://team-filled-with-laughter.netlify.app',
+                'Access-Control-Allow-Methods': 'POST, OPTIONS',
+                'Access-Control-Allow-Headers': 'Content-Type',
+                'Access-Control-Allow-Credentials': 'true'
+            },
+            body: JSON.stringify({ up: value })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.message) {
+                alert(data.message);
+            } else if (data.error) {
+                alert(data.error);
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('엑추에이터 오류.');
+        });
+    }
+</script>
+
+</body>
+</html>

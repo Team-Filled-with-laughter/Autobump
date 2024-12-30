@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../css/style.css" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;600&display=swap" rel="stylesheet">
+    <title>자동방지턱 관제 시스템</title>
+</head>
+<body>
+<div class="banner">
+    <a href="https://github.com/Team-Filled-with-laughter" target="_blank" class="banner-link">
+        <p class="banner-text">TEAM 웃음가득조 (진준형, 김지헌, 김태건)</p>
+    </a>
+</div>
+<div class="black-nav">
+    <div>자동방지턱 관제 시스템</div>
+</div>
+<div class="container">
+    <img
+            id="video"
+            src="/video-feed"
+            alt="Camera Stream"
+            width="640"
+            height="480"
+    />
+</div>
+<div class="Datalogsection">
+    <div>
+        <h1>실시간 차량 속도 측정값 출력 공간</h1>
+        <p id="v1"><strong>v1 (순간속도) :</strong></p>
+        <p id="v2"><strong>v2 (평균속도) :</strong></p>
+    </div>
+
+
+</div>
+<div class="speedsection">
+    <div>
+        <h1>방지턱 작동기준 속도 컨트롤러</h1>
+        <input type="number" id="thresholdInput" class="number" min="1" max="50" value="5">
+        <button class="submit" id="thresholdButton">변경하기</button>
+    </div>
+</div>
+<div class="actuatorsection">
+    <h2 class="section-title">액추에이터 UP / DOWN 컨트롤러</h2>
+    <div>
+        <button class="actuatorbutton btn-up" id="upButton">
+            <div class="arrow01"></div> <!-- 위 화살표 -->
+        </button>
+        <button class="actuatorbutton btn-down" id="downButton">
+            <div class="arrow01"></div> <!-- 아래 화살표 (회전) -->
+        </button>
+    </div>
+</div>
+
+---------------------------------------------------
+
+<script>
+    // Speed feed 데이터를 받는 SSE 연결
+    const eventSource = new EventSource("/speed_feed");
+
+    // 데이터를 받으면 화면에 표시
+    eventSource.onmessage = function(event) {
+        const data = JSON.parse(event.data); // JSON 파싱
+        document.getElementById("v1").textContent = "v1 (순간속도): "+ data.v1;
+        document.getElementById("v2").textContent = "v2 (평균속도): " + data.v2;
+    };
+
+    eventSource.onerror = function() {
+        console.error("Error occurred while receiving SSE.");
+    };
+
+    // 버튼 클릭 시 POST 요청을 보내는 함수 (임계값 업데이트)
+    document.getElementById('thresholdButton').addEventListener('click', function() {
+        const thresholdValue = document.getElementById('thresholdInput').value;
+
+        if (!thresholdValue || isNaN(thresholdValue)) {
+            alert('유효한 임계값을 입력해주세요.');
+            return;
+        }
+
+        fetch('http://localhost:5001/update_threshold', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ threshold: parseInt(thresholdValue) })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.message) {
+                alert(data.message);
+            } else if (data.error) {
+                alert(data.error);
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('임계값 업데이트 중 오류가 발생했습니다.');
+        });
+    });
+
+    // Up 버튼 클릭 시 POST 요청을 보내는 함수 (값 1)
+    document.getElementById('upButton').addEventListener('click', function() {
+        sendThresholdUpdate(1);  // 1을 서버로 보냄
+
+        this.classList.add('blinking-red');
+
+        // 애니메이션이 끝난 후 클래스를 제거 (1초 후)
+        setTimeout(() => {
+            this.classList.remove('blinking-red');
+            }, 3000);  // 1초 후 애니메이션 끝내기
+    });
+
+    // Down 버튼 클릭 시 POST 요청을 보내는 함수 (값 -1)
+    document.getElementById('downButton').addEventListener('click', function() {
+        sendThresholdUpdate(-1);  // -1을 서버로 보냄
+
+        // 애니메이션 시작
+        this.classList.add('blinking-blue');
+
+        // 애니메이션이 끝난 후 클래스를 제거 (1초 후)
+        setTimeout(() => {
+            this.classList.remove('blinking-blue');
+            }, 3000);  // 1초 후 애니메이션 끝내기
+    });
+
+    // 서버에 임계값 변경 요청을 보내는 함수
+    function sendThresholdUpdate(value) {
+        fetch('http://localhost:5001/update_actuator', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ up: value })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.message) {
+                alert(data.message);
+            } else if (data.error) {
+                alert(data.error);
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('엑추에이터 오류.');
+        });
+    }
+</script>
+</body>
+</html>
