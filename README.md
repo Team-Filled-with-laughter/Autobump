@@ -13,18 +13,23 @@
 ## * 프로젝트 아키텍처
 * 아두이노
 ![아두이노 아키텍처 사진](https://github.com/Team-Filled-with-laughter/Autobump/blob/main/%EC%82%AC%EC%A7%84/%EC%95%84%EB%91%90%EC%9D%B4%EB%85%B8%20%EC%95%84%ED%82%A4%ED%85%8D%EC%B3%90.png)
+
 * 젯슨나노
 ![젯슨나노 아키텍처 사진](https://github.com/Team-Filled-with-laughter/Autobump/blob/main/%EC%82%AC%EC%A7%84/%EC%A0%AF%EC%8A%A8%EB%82%98%EB%85%B8%20%EC%95%84%ED%82%A4%ED%85%8D%EC%B3%90.png)
+
 * 웹
+![웹 아키텍처 사진](https://github.com/Team-Filled-with-laughter/Autobump/blob/main/%EC%82%AC%EC%A7%84/%EC%9B%B9%20%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98.png)
 
 ## * 프로젝트 주요 기능
 1. 속도 측정 및 방지턱 작동
+![속도 측정 및 작동 원리](https://github.com/Team-Filled-with-laughter/Autobump/blob/main/%EC%82%AC%EC%A7%84/%EC%86%8D%EB%8F%84%20%EA%B0%90%EC%A7%80%20%EB%B0%8F%20%EB%B0%A9%EC%A7%80%ED%84%B1%20%EC%9E%91%EB%8F%99%20%EC%9B%90%EB%A6%AC.png)
 
 2. 날씨에 따른 LCD 화면 출력
 
 3. 공무 수행 차량 인식 기능
 
 4. 방지턱 관제 시스템
+![관제 시스템 사진](https://github.com/Team-Filled-with-laughter/Autobump/blob/main/%EC%82%AC%EC%A7%84/%EC%9B%B9%20%EA%B4%80%EC%A0%9C%EC%8B%9C%EC%8A%A4%ED%85%9C%20%EC%82%AC%EC%A7%84.png)
 
 ## * 도로 사진
 ![도로 사진](https://github.com/Team-Filled-with-laughter/Autobump/blob/main/%EB%8F%84%EB%A1%9C%20%EC%82%AC%EC%A7%84.PNG)
