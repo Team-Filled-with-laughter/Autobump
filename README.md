@@ -40,7 +40,8 @@
 [웃음가득조 시연 영상](http://naver.me/FY3zYbeS)
 
 ## 논문
-![한국사묾인터넷학회 논문]
+![한국사물인터넷학회 논문](https://github.com/Team-Filled-with-laughter/Autobump/blob/main/%EC%82%AC%EC%A7%84/2024_%ED%95%9C%EA%B5%AD%EC%82%AC%EB%AC%BC%EC%9D%B8%ED%84%B0%EB%84%B7%ED%95%99%ED%9A%8C%2B%EC%A2%85%ED%95%A9%ED%95%99%EC%88%A0%EB%8C%80%ED%9A%8C_%EC%9B%83%EC%9D%8C%EA%B0%80%EB%93%9D%ED%8C%80%2B241105-%EC%B5%9C%EC%A2%85%EB%B3%B8_v5.hwp)
+
 ## * 프로젝트 수상 이력
 - **국립부경대학교 2024학년도 정보융합대학 융합캡스톤디자인 경진대회 장려상 수상**
 ![수상 사진](https://github.com/Team-Filled-with-laughter/Autobump/blob/main/%EC%82%AC%EC%A7%84/%EB%B6%80%EA%B2%BD%EB%8C%80%ED%95%99%EA%B5%90_2024%ED%95%99%EB%85%84%EB%8F%84_%EC%A0%95%EB%B3%B4%EC%9C%B5%ED%95%A9%EB%8C%80%ED%95%99_%EC%9C%B5%ED%95%A9%EC%BA%A1%EC%8A%A4%ED%86%A4%EB%94%94%EC%9E%90%EC%9D%B8_%EA%B2%BD%EC%A7%84%EB%8C%80%ED%9A%8C(%EC%9E%A5%EB%A0%A4%EC%83%81).pdf)
