@@ -12,9 +12,9 @@
 
 ## * 프로젝트 아키텍처
 * 아두이노
-
+![아두이노 아키텍처 사진](https://github.com/Team-Filled-with-laughter/Autobump/blob/main/%EC%82%AC%EC%A7%84/%EC%95%84%EB%91%90%EC%9D%B4%EB%85%B8%20%EC%95%84%ED%82%A4%ED%85%8D%EC%B3%90.png)
 * 젯슨나노
-
+![젯슨나노 아키텍처 사진](https://github.com/Team-Filled-with-laughter/Autobump/blob/main/%EC%82%AC%EC%A7%84/%EC%A0%AF%EC%8A%A8%EB%82%98%EB%85%B8%20%EC%95%84%ED%82%A4%ED%85%8D%EC%B3%90.png)
 * 웹
 
 ## * 프로젝트 주요 기능
